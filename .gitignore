@@ -1,0 +1,9 @@
+/game-gungame.xml
+.project
+bin
+classes
+.idea
+.settings
+module_game-gungame.xml
+.classpath
+game-gungame.properties

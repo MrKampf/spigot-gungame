@@ -1,0 +1,16 @@
+name: GunGame
+version: 1.0
+description: Gungame plugin, with this plugin you can play gungame.
+author: MrKampf
+main: de.kampfia.gungame.Main
+
+commands:
+  setspawn:
+    description: Set new spawn point.
+    permission: gungame.setspawn
+  setlevel:
+    description: Set level from a player.
+    permission: gungame.setlevel
+  setspawnprotection:
+    description: Set the spawn protection radius.
+    permission: gungame.setspawnprotection
