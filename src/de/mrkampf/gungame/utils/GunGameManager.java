@@ -1,29 +1,34 @@
+/*
+ * Copyright (C) 2018-2020 Daniel Engelschalk - All Rights Reserved
+ * Email: hello@mrkampf.com
+ */
+
 package de.mrkampf.gungame.utils;
 
 import de.mrkampf.gungame.Main;
-import de.mrkampf.gungame.mysql.LevelLoader;
+import de.mrkampf.gungame.mysql.DatabaseManager;
 import org.bukkit.entity.Player;
 
 public class GunGameManager {
 
 	private Main main;
-	private LevelLoader levelLoader;
-	private scoreboard scoreboard;
+	private DatabaseManager databaseManager;
+	private Scoreboard scoreboard;
 
 	public GunGameManager(Main main){
 		this.main = main;
-		levelLoader = new LevelLoader(main);
-		scoreboard = new scoreboard(main);
+		databaseManager = new DatabaseManager(main);
+		scoreboard = new Scoreboard(main);
 	}
 
 
 	public void PlayerKilled(Player p) {
-		int currentLevel = levelLoader.getLevel(p.getUniqueId());
+		int currentLevel = databaseManager.getLevel(p.getUniqueId());
 		if(currentLevel<=30) {
 			GunGameEngine.levelChange(p, (1+currentLevel));
-			levelLoader.updateLevel(p.getUniqueId());
+			databaseManager.updateLevel(p.getUniqueId());
 		}
-		levelLoader.updateKills(p.getUniqueId());
+		databaseManager.updateKills(p.getUniqueId());
 		scoreboard.updatescoreboard(p);
 		if(!p.isDead()&&!Main.dead.contains(p)) {
 			p.setHealth(20);
@@ -32,8 +37,8 @@ public class GunGameManager {
 	
 	public void PlayerDeath(Player p) {
 		GunGameEngine.levelChange(p,1);
-		levelLoader.resetLevel(p.getUniqueId());
-		levelLoader.updateDeath(p.getUniqueId());
+		databaseManager.resetLevel(p.getUniqueId());
+		databaseManager.updateDeath(p.getUniqueId());
 		scoreboard.updatescoreboard(p);
 	}
 	

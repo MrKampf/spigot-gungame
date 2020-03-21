@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2018-2020 Daniel Engelschalk - All Rights Reserved
+ * Email: hello@mrkampf.com
+ */
+
 package de.mrkampf.gungame.mysql;
 
 import de.mrkampf.gungame.Main;
@@ -7,11 +12,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
 
-public class LevelLoader {
+public class DatabaseManager {
 
 	private Main main;
 
-	public LevelLoader(Main main) {
+	public DatabaseManager(Main main) {
 		this.main = main;
 	}
 

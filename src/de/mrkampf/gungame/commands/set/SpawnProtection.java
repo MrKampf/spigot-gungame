@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2018-2020 Daniel Engelschalk - All Rights Reserved
+ * Email: hello@mrkampf.com
+ */
+
 package de.mrkampf.gungame.commands.set;
 
 import de.mrkampf.gungame.Main;
@@ -55,7 +60,7 @@ public class SpawnProtection implements CommandExecutor {
             try {
                 if (args.length == 1) {//Check length of args
                     int radius = Integer.parseInt(args[0]); //Init radius and fill this with radius
-                    boolean isSet = main.fileManager.set().spawnProtection(radius); //Update the spawn protection radius
+                    boolean isSet = main.configManager.set().spawnProtection(radius); //Update the spawn protection radius
                     if (isSet) { //Was updated from spawn protection successful
                         p.sendMessage(main.Prefix + ChatColor.GREEN +"The spawn protection radius, was changed to "+radius+"!"); //Send message, the command was successful processed
                     } else { //Update wasn't successful
@@ -80,7 +85,7 @@ public class SpawnProtection implements CommandExecutor {
 		try {
 			if (args.length == 1) {//Check length of args
 				int radius = Integer.parseInt(args[0]); //Init radius and fill this with radius
-				boolean isSet = main.fileManager.set().spawnProtection(radius); //Update the spawn protection radius
+				boolean isSet = main.configManager.set().spawnProtection(radius); //Update the spawn protection radius
 				if (isSet) { //Was updated from spawn protection successful
 					System.out.println(main.CMDPrefix + ConsoleColors.GREEN +"The spawn protection radius, was changed to "+radius+"!"); //Send message, the command was successful processed
 				} else { //Update wasn't successful

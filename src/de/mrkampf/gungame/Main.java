@@ -1,14 +1,22 @@
+/*
+ * Copyright (C) 2018-2020 Daniel Engelschalk - All Rights Reserved
+ * Email: hello@mrkampf.com
+ */
+
 package de.mrkampf.gungame;
 
 import de.mrkampf.gungame.commands.set.Level;
 import de.mrkampf.gungame.commands.set.Spawn;
 import de.mrkampf.gungame.commands.set.SpawnProtection;
-import de.mrkampf.gungame.events.*;
+import de.mrkampf.gungame.events.BlockBreak;
+import de.mrkampf.gungame.events.BlockPlace;
+import de.mrkampf.gungame.events.FoodLevelChange;
+import de.mrkampf.gungame.events.WeatherChange;
 import de.mrkampf.gungame.events.entity.Damage;
-import de.mrkampf.gungame.events.player.Death;
+import de.mrkampf.gungame.events.player.*;
 import de.mrkampf.gungame.mysql.MySQL;
+import de.mrkampf.gungame.utils.ConfigManager;
 import de.mrkampf.gungame.utils.ConsoleColors;
-import de.mrkampf.gungame.utils.FileManager;
 import de.mrkampf.gungame.utils.GunGameEngine;
 import de.mrkampf.gungame.utils.LanguageManager;
 import org.bukkit.Bukkit;
@@ -27,7 +35,7 @@ public class Main extends JavaPlugin {
 
     public MySQL mySQL;
 
-    public FileManager fileManager;
+    public ConfigManager configManager;
     public File file;
     public FileConfiguration cfg;
 
@@ -45,12 +53,12 @@ public class Main extends JavaPlugin {
     public static ArrayList<Player> dead = new ArrayList<Player>(); //With this, we check, what player is current dead
 
     public void onEnable() {
-        fileManager = new FileManager(this); //Fill with file manager class
+        configManager = new ConfigManager(this); //Fill with file manager class
         languageManager = new LanguageManager(this); //Fill with language manager class
 
-        file = fileManager.getConfig(); //Loading config file
+        file = configManager.getConfig(); //Loading config file
         System.out.println(CMDPrefix + "Config.yml loaded"); //Send message, config file was loaded
-        cfg = fileManager.fileConfiguration(); //Loading file configuration
+        cfg = configManager.fileConfiguration(); //Loading file configuration
         System.out.println(CMDPrefix + "Config.yml processed"); //Send message, config file was processed
         language = languageManager.getDefault(); //Loading the default language file
         debug = cfg.getBoolean("gungame.settings.debug"); //Loading debug setting
@@ -98,12 +106,12 @@ public class Main extends JavaPlugin {
     private void registerEvents() {
         Bukkit.getPluginManager().registerEvents(new Death(this), this);
         Bukkit.getPluginManager().registerEvents(new Damage(this), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerJoin(this), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerMove(this), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerLeave(this), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerDrop(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerRespawn(this), this);
-        Bukkit.getPluginManager().registerEvents(new WeatherChangeListener(), this);
+        Bukkit.getPluginManager().registerEvents(new Join(this), this);
+        Bukkit.getPluginManager().registerEvents(new Move(this), this);
+        Bukkit.getPluginManager().registerEvents(new Quit(this), this);
+        Bukkit.getPluginManager().registerEvents(new DropItem(), this);
+        Bukkit.getPluginManager().registerEvents(new Respawn(this), this);
+        Bukkit.getPluginManager().registerEvents(new WeatherChange(), this);
         Bukkit.getPluginManager().registerEvents(new BlockBreak(this), this);
         Bukkit.getPluginManager().registerEvents(new BlockPlace(this), this);
         Bukkit.getPluginManager().registerEvents(new FoodLevelChange(), this);

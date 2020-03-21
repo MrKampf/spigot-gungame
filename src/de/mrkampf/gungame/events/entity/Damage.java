@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2018-2020 Daniel Engelschalk - All Rights Reserved
+ * Email: hello@mrkampf.com
+ */
+
 package de.mrkampf.gungame.events.entity;
 
 import de.mrkampf.gungame.Main;
@@ -52,8 +57,8 @@ public class Damage implements Listener {
      * @return boolean
      */
     public boolean checkSpawnProtection(Location ploc) {
-        Location loc = main.fileManager.get().spawn(); //Get spawn location
-        int Spawnprotection = main.fileManager.get().spawnProtection(); //Get spawn protection radius
+        Location loc = main.configManager.get().spawn(); //Get spawn location
+        int Spawnprotection = main.configManager.get().spawnProtection(); //Get spawn protection radius
         return ploc.distance(loc) < Spawnprotection; //Is player in spawn protection area
     }
 

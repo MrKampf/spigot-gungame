@@ -28,7 +28,7 @@ public class MySQL {
      */
     public MySQL(Main main) {
         this.main = main;
-        this.connectionData = main.fileManager.getMySQLData();
+        this.connectionData = main.configManager.getMySQLData();
     }
 
     /**

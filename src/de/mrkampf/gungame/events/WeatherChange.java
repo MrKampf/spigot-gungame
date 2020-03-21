@@ -7,18 +7,17 @@ package de.mrkampf.gungame.events;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.weather.WeatherChangeEvent;
 
-public class FoodLevelChange implements Listener {
+public class WeatherChange implements Listener{
 
 	/**
-	 * Food level change event handler
+	 * Player quit event handler
 	 *
-	 * @param e FoodLevelChangeEvent
+	 * @param e WeatherChangeEvent
 	 */
 	@EventHandler
-	public void onFoodChange(FoodLevelChangeEvent e) {
+	public void OnWeatherChange(WeatherChangeEvent e) {
 		e.setCancelled(true); //Cancel this event
 	}
-
 }

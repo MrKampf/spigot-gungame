@@ -1,4 +1,9 @@
-package de.mrkampf.gungame.utils.fileManager;
+/*
+ * Copyright (C) 2018-2020 Daniel Engelschalk - All Rights Reserved
+ * Email: hello@mrkampf.com
+ */
+
+package de.mrkampf.gungame.utils.configManager;
 
 import de.mrkampf.gungame.Main;
 import org.bukkit.entity.Player;

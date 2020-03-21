@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2018-2020 Daniel Engelschalk - All Rights Reserved
+ * Email: hello@mrkampf.com
+ */
+
 package de.mrkampf.gungame.commands.set;
 
 import de.mrkampf.gungame.Main;
@@ -56,7 +61,7 @@ public class Spawn implements CommandExecutor {
      */
     private void playerCommand(Player p, String[] args) {
         if (p.hasPermission(main.permission + cmdPrefix)) { //Has player permission to use this command
-            boolean isSet = main.fileManager.set().spawn(p); //Update spawn point
+            boolean isSet = main.configManager.set().spawn(p); //Update spawn point
             if (isSet) {
                 p.sendMessage(main.Prefix + ChatColor.GREEN + "The spawn point was updated!"); //Send message, the command was successful processed
             } else {

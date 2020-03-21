@@ -5,9 +5,8 @@
 package de.mrkampf.gungame.utils;
 
 import de.mrkampf.gungame.Main;
-import de.mrkampf.gungame.utils.fileManager.Get;
-import de.mrkampf.gungame.utils.fileManager.Set;
-import de.mrkampf.gungame.utils.fileManager.Teleport;
+import de.mrkampf.gungame.utils.configManager.Get;
+import de.mrkampf.gungame.utils.configManager.Set;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -15,7 +14,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FileManager {
+public class ConfigManager {
 
     private Main main; //Main class
     private File file; //Config file
@@ -25,7 +24,7 @@ public class FileManager {
      * Constructor
      * @param main
      */
-    public FileManager(Main main) {
+    public ConfigManager(Main main) {
         this.main = main;
     }
 
@@ -128,14 +127,6 @@ public class FileManager {
             System.out.println(main.CMDPrefix+ConsoleColors.RED+"Error: Mysql values can't find in config file!");
         }
         return mysqlData;
-    }
-
-    /**
-     * get Teleport class
-     * @return Teleport
-     */
-    public Teleport teleport(){
-        return new Teleport(main);
     }
 
     /**
