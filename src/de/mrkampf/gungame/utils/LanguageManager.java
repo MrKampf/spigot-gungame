@@ -14,6 +14,7 @@ import java.util.Map;
 
 /**
  * Language manager
+ * TODO Support multi lang
  */
 public class LanguageManager {
 

@@ -63,14 +63,14 @@ public class Death implements Listener {
                 e.getDrops().clear(); //Let no items drop
             } else { //Contain the array list the killed player
                 System.out.println(main.CMDPrefix + ConsoleColors.RED + "Error: The killed player was already in dead list!");
-				e.setDeathMessage(main.Prefix + ChatColor.GRAY + "The player " + ChatColor.RED + p.getName() + ChatColor.GRAY + " was killed!"); //Send message to all players
-				e.getDrops().clear(); //Let no items drop
+                e.setDeathMessage(main.Prefix + ChatColor.GRAY + "The player " + ChatColor.RED + p.getName() + ChatColor.GRAY + " was killed!"); //Send message to all players
+                e.getDrops().clear(); //Let no items drop
             }
         } catch (Exception ex) { //If exception
             System.out.println(main.CMDPrefix + ConsoleColors.RED + "Error: This dead created are error!");
             System.out.println(ex.getMessage()); //Send error message to console
-			e.setDeathMessage(main.Prefix + ChatColor.GRAY + "The player " + ChatColor.RED + p.getName() + ChatColor.GRAY + " was killed!"); //Send message to all players
-			e.getDrops().clear(); //Let no items drop
+            e.setDeathMessage(main.Prefix + ChatColor.GRAY + "The player " + ChatColor.RED + p.getName() + ChatColor.GRAY + " was killed!"); //Send message to all players
+            e.getDrops().clear(); //Let no items drop
         }
     }
 

@@ -15,27 +15,46 @@ import org.bukkit.scoreboard.ScoreboardManager;
 
 public class Scoreboard {
 
-    private Main main;
+    private Main main; //Main class
+    private DatabaseManager databaseManager; //Database manager class
 
+    /**
+     * Constructor
+     *
+     * @param main Main
+     */
     public Scoreboard(Main main) {
-        this.main = main;
+        this.main = main; //Fill class variable
+        databaseManager = new DatabaseManager(main); //Fill class variable
     }
 
-	public void updatescoreboard(Player p){
-        DatabaseManager databaseManager = new DatabaseManager(main);
-		scoreboardset(p, databaseManager.getLevel(p.getUniqueId()), databaseManager.getDeaths(p.getUniqueId()), databaseManager.getKills(p.getUniqueId()));
-	}
+    /**
+     * Update player scoreboard
+     *
+     * @param p Player
+     */
+    public void updatescoreboard(Player p) {
+        scoreboardset(p, databaseManager.getLevel(p.getUniqueId()), databaseManager.getDeaths(p.getUniqueId()), databaseManager.getKills(p.getUniqueId())); //Set player scoreboard
+    }
 
-	public static void scoreboardset(Player p, int level, int death, int kills){
-		ScoreboardManager sbm = Bukkit.getScoreboardManager();
-		org.bukkit.scoreboard.Scoreboard sm = sbm.getNewScoreboard();
-        Objective score = sm.registerNewObjective("aaa", "bbb");
-        score.setDisplayName("§*******.eu §7- §aGunGame");
-        score.setDisplaySlot(DisplaySlot.SIDEBAR);
-        score.getScore("§1").setScore(4);
-        score.getScore("§fLevel:§e"+level).setScore(3);
-        score.getScore("§fDeath:§e"+death).setScore(2);
-        score.getScore("§fKills:§a"+kills).setScore(1);
-        p.setScoreboard(sm);
-	}
+    /**
+     * Set player scoreboard
+     *
+     * @param p Player
+     * @param level Int
+     * @param death Int
+     * @param kills Int
+     */
+    public static void scoreboardset(Player p, int level, int death, int kills) {
+        ScoreboardManager sbm = Bukkit.getScoreboardManager(); //Load scoreboard manager
+        org.bukkit.scoreboard.Scoreboard sm = sbm.getNewScoreboard(); //Create new scoreboard
+        Objective score = sm.registerNewObjective("aaa", "bbb"); //Register new objective
+        score.setDisplayName("§*******.eu §7- §aGunGame"); //Set display name
+        score.setDisplaySlot(DisplaySlot.SIDEBAR); //Set display position
+        score.getScore("§1").setScore(4); //Set score
+        score.getScore("§fLevel:§e" + level).setScore(3); //Set score level
+        score.getScore("§fDeath:§e" + death).setScore(2); //Set score death
+        score.getScore("§fKills:§a" + kills).setScore(1); //Set score kill
+        p.setScoreboard(sm); //Set scoreboard by player
+    }
 }

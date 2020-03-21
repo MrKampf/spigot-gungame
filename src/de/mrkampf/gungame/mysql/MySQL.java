@@ -15,10 +15,8 @@ import java.util.Map;
 
 public class MySQL {
 
-    private Main main;
-
+    private Main main; //Plugin main class
     private Map<String, String> connectionData = new HashMap<>();
-
     public static Connection con; //MySQL connection
 
     /**
@@ -27,20 +25,20 @@ public class MySQL {
      * @param main
      */
     public MySQL(Main main) {
-        this.main = main;
-        this.connectionData = main.configManager.getMySQLData();
+        this.main = main; //Fill class variable
+        this.connectionData = main.configManager.getMySQLData(); //Get connection data
     }
 
     /**
      * Connect to mysql server and hold the connection in the con variable
      */
     public void connect() {
-        if (!isConnected()) {
+        if (!isConnected()) { //Is already connected to database
             try {
                 con = DriverManager.getConnection("jdbc:mysql://" + connectionData.get("host") + ":" + connectionData.get("port") + "/" + connectionData.get("database") + "?autoReconnect=true", connectionData.get("user"), connectionData.get("password")); //Connect to mysql server and safe in con variable
-                System.out.println(main.CMDPrefix + "MySQL - Connected!");
+                System.out.println(main.CMDPrefix + "MySQL - Connected!"); //Send message, connection successful
             } catch (SQLException e) {
-                System.out.println(main.CMDPrefix + ConsoleColors.RED + "Error: MySQL connection failed!");
+                System.out.println(main.CMDPrefix + ConsoleColors.RED + "Error: MySQL connection failed!"); //Send message, connection error
                 if (main.debug) { //IF debug enable
                     e.printStackTrace();
                 }
@@ -56,7 +54,7 @@ public class MySQL {
             try {
                 con.close(); //Close connection
                 con = null; //Clear variable
-                System.out.println(main.CMDPrefix + "MySQL - Disconnected!");
+                System.out.println(main.CMDPrefix + "MySQL - Disconnected!"); //Send message, disconnected
             } catch (SQLException e) {
                 System.out.println(main.CMDPrefix + ConsoleColors.RED + "Error: MySQL disconnection failed!");
                 if (main.debug) { //IF debug enable

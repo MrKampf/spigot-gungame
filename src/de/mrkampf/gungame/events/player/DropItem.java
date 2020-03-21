@@ -9,16 +9,16 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerDropItemEvent;
 
-public class DropItem implements Listener{
+public class DropItem implements Listener {
 
-	/**
-	 * Player drop item event handler
-	 *
-	 * @param e PlayerDropItemEvent
-	 */
-	@EventHandler
-	public void onDrop(PlayerDropItemEvent e) {
-		//TODO Allow item drop in edit mode?
-		e.setCancelled(true); //Cancel this event
-	}
+    /**
+     * Player drop item event handler
+     *
+     * @param e PlayerDropItemEvent
+     */
+    @EventHandler
+    public void onDrop(PlayerDropItemEvent e) {
+        //TODO Allow item drop in edit mode?
+        e.setCancelled(true); //Cancel this event
+    }
 }

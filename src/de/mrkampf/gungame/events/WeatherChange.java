@@ -9,15 +9,15 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.weather.WeatherChangeEvent;
 
-public class WeatherChange implements Listener{
+public class WeatherChange implements Listener {
 
-	/**
-	 * Player quit event handler
-	 *
-	 * @param e WeatherChangeEvent
-	 */
-	@EventHandler
-	public void OnWeatherChange(WeatherChangeEvent e) {
-		e.setCancelled(true); //Cancel this event
-	}
+    /**
+     * Player quit event handler
+     *
+     * @param e WeatherChangeEvent
+     */
+    @EventHandler
+    public void OnWeatherChange(WeatherChangeEvent e) {
+        e.setCancelled(true); //Cancel this event
+    }
 }
