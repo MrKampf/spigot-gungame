@@ -2,7 +2,7 @@ name: GunGame
 version: 1.0
 description: Gungame plugin, with this plugin you can play gungame.
 author: MrKampf
-main: de.kampfia.gungame.Main
+main: de.mrkampf.gungame.Main
 
 commands:
   setspawn:
